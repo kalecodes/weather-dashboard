@@ -14,8 +14,8 @@
     <div class="flex inline-block justify-around h-full m-4">
         <div class="border border-black w-4/12 h-fit">
             <h2 class="m-1">Search for a City:</h2>
-            <input class="w-11/12 h-8 m-1 px-2 border border-black"/>
-            <button type="submit" class="w-3/12 h-8 m-1 p-1 border border-black">Search</button>
+            <input id="searchEl" class="w-11/12 h-8 m-1 px-2 border border-black"/>
+            <button type="submit" id="searchBtn" class="w-3/12 h-8 m-1 p-1 border border-black">Search</button>
             <br/>
             <div class="mt-4">
                 <h2 class="m-1">Search History:</h2>
@@ -26,14 +26,14 @@
             </div>
         </div>
         <div class="border bg-orange-400 w-8/12">
-            <div class="h-3/6 p-2 border border-black">
-                <h1 class="text-2xl">City Name (1/11/2022)<span>$</span></h1>
+            <div id="currentContainer" class="h-3/6 p-2 border border-black">
+                <h1 idd="cityNameDisplay" class="text-2xl">City Name (1/11/2022)<span>$</span></h1>
                 <p>Temp:</p>
                 <p>Wind:</p>
                 <p>Humidity</p>
                 <p>UV Index:</p>
             </div>
-            <div class="h-3/6 p-2 border border-black">
+            <div id="dailyContainer" class="h-3/6 p-2 border border-black">
                 <h2 class="mb-1">5-Day Forecast:</h2>
                 <div class="flex justify-between">
                     <div class="h-11/12 w-1/6 p-1 bg-blue-700">
@@ -48,5 +48,7 @@
             </div>
         </div>
     </div>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
