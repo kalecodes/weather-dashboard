@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header class="flex justify-center items-center min-w-full h-16 bg-blue-500" >
+        <h1 class="text-3xl">Weather Dashboard</h1>
+    </header>
+    <div class="flex inline-block justify-around h-full m-4">
+        <div class="border border-black w-4/12 h-fit">
+            <h2 class="m-1">Search for a City:</h2>
+            <input class="w-11/12 h-8 m-1 px-2 border border-black"/>
+            <button type="submit" class="w-3/12 h-8 m-1 p-1 border border-black">Search</button>
+            <br/>
+            <div class="mt-4">
+                <h2 class="m-1">Search History:</h2>
+                <ul class="">
+                    <li class="w-11/12 h-8 mx-auto mb-2 bg-slate-300 p-1">Test History</li>
+                    <li class="w-11/12 h-8 mx-auto mb-2 bg-slate-300 p-1">Test history 2</li>
+                </ul>
+            </div>
+        </div>
+        <div class="border bg-orange-400 w-8/12">
+            <div class="h-3/6 p-2 border border-black">
+                <h1 class="text-2xl">City Name (1/11/2022)<span>$</span></h1>
+                <p>Temp:</p>
+                <p>Wind:</p>
+                <p>Humidity</p>
+                <p>UV Index:</p>
+            </div>
+            <div class="h-3/6 p-2 border border-black">
+                <h2 class="mb-1">5-Day Forecast:</h2>
+                <div class="flex justify-between">
+                    <div class="h-11/12 w-1/6 p-1 bg-blue-700">
+                        <h3>01/12/2022</h3>
+                        <span>&</span>
+                        <p>Temp</p>
+                        <p>Wind</p>
+                        <p>Humidity</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
