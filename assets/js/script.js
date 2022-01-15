@@ -2,12 +2,11 @@ var currentWeatherContainer = document.getElementById("currentContainer");
 var dailyWeatherContainer = document.getElementById("dailyContainer");
 var dailyParentContainer = document.getElementById("dailyParentEl");
 var dailyHeader = document.getElementById("dailyHeader");
-// var cityNameEl = document.getElementById("cityNameDisplay");
 var searchEl = document.getElementById("searchEl");
 var searchBtn = document.getElementById("searchBtn");
 var historyList = document.getElementById("historyList");
 var historyTitle = document.getElementById("historyTitle");
-// var symbolEl = document.getElementById("symbolEl");
+var searchHistory = [];
 
 var d = (new Date()).getDate();
 var m = (new Date()).getMonth() +1;
@@ -139,33 +138,50 @@ var translateLoc = function(cityName) {
     })
 }
 
+
 //add searched city to history list
 var addToHistory = function(cityName) {
+    if (searchHistory.length > 7) {
+        searchHistory.shift();
+    }
+    searchHistory.push(cityName);
+    localStorage.setItem("searches", JSON.stringify(searchHistory));
+}
+
+var displayHistory = function(cityName) {
     var recentCityEl = document.createElement("li");
     recentCityEl.setAttribute("class", "w-11/12 h-8 mx-auto mb-2 bg-slate-300 p-1");
     recentCityEl.textContent = cityName;
-
     historyTitle.textContent = "Recent Search History:"
     historyList.prepend(recentCityEl);
-
 }
 
 //create form submit handler and pass input to API
 var formSubmitHandler = function(event) {
-  //  event.preventDefault();
-
+    event.preventDefault();
+    
     var cityName = searchEl.value;
+    searchEl.value = "";
     //check if city has been entered and pass city name to to translate function
     if (cityName) {
         //clear all previous data 
-        
-        searchEl.textContent = "";
         //RUN FUNCTION CHAIN TO DISPLAY SEARCH RESULTS
         translateLoc(cityName);
         addToHistory(cityName);
+        loadSearchHistory();
     } else {
         alert("Please enter a US city name.")
     }
 };
 
 searchBtn.addEventListener("click", formSubmitHandler);
+
+var loadSearchHistory = function() {
+    historyList.textContent = "";
+    var storedHistory = JSON.parse(localStorage.getItem("searches"))
+    for (i = 0; i < storedHistory.length; i++) {
+        displayHistory(storedHistory[i]);
+    }
+}
+
+document.addEventListener("load", loadSearchHistory());
