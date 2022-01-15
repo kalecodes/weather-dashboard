@@ -10,7 +10,7 @@ var m = (new Date()).getMonth() +1;
 var y = (new Date()).getFullYear();
 
 //display current weather data in currentContainer
-var displayCurrent = function(data) {
+var displayCurrent = function(cityName, data) {
     //clear old data
     //cityNameEl.textContent = "";
     //cityNameEl.textContent = "";
@@ -18,7 +18,7 @@ var displayCurrent = function(data) {
 
     //display current day info to the page 
     symbolEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png")
-    cityNameEl.textContent = "Richmond (" + m + "/" + d + "/" + y + ") ";
+    cityNameEl.textContent = cityName + "(" + m + "/" + d + "/" + y + ") ";
     
     var tempEl = document.createElement("p");
     tempEl.textContent = "Temp: " + data.current.temp + " °F";
@@ -75,7 +75,7 @@ var displayDaily = function(data) {
 
 
 //function that makes request to server
-var getWeatherData = function(latitude, longitude) {
+var getWeatherData = function(cityName, latitude, longitude) {
 
     //apil url
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=minutely,hourly,alerts&units=imperial&appid=f0ae06afe6fabb93ea6866f6b722fa6a";
@@ -85,7 +85,7 @@ var getWeatherData = function(latitude, longitude) {
         if (response.ok) {
             response.json().then(function(data) {
                 //send response data to displayWeather function
-                displayCurrent(data);
+                displayCurrent(cityName, data);
                 displayDaily(data);
             });
         } else {
@@ -106,7 +106,7 @@ var translateLoc = function(cityName) {
             response.json().then(function(locationData) {
                 var latitude = locationData[0].lat;
                 var longitude = locationData[0].lon;
-                getWeatherData(latitude,longitude)
+                getWeatherData(cityName, latitude,longitude)
             })
         } else {
             alert("Error: Could not find city coordinates")
