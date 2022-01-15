@@ -18,20 +18,19 @@
             <button type="submit" id="searchBtn" class="w-3/12 h-8 m-1 p-1 border border-black">Search</button>
             <br/>
             <div class="mt-4">
-                <h2 class="m-1">Search History:</h2>
-                <ul class="">
-                    <li class="w-11/12 h-8 mx-auto mb-2 bg-slate-300 p-1">Test History</li>
-                    <li class="w-11/12 h-8 mx-auto mb-2 bg-slate-300 p-1">Test history 2</li>
+                <h2 id="historyTitle" class="m-1"></h2>
+                <ul id="historyList" class="">
+
                 </ul>
             </div>
         </div>
         <div class="border bg-orange-400 w-8/12">
             <div id="currentContainer" class="h-3/6 p-2 border border-black">
-                <span style="display:flex; align-items: center;"><h1 style="display:inline;" id="cityNameDisplay" class="text-2xl"></h1><img style="display: inline;" id="symbolEl" src=""/></span>
+                <!-- <span style="display:flex; align-items: center;"><h1 style="display:inline;" id="cityNameDisplay" class="text-2xl"></h1><img style="display: inline;" id="symbolEl" src=""/></span> -->
                 
             </div>
-            <div class="h-3/6 p-2 border border-black">
-                <h2 class="mb-1">5-Day Forecast:</h2>
+            <div id="dailyParentEl" class="h-3/6 p-2 border border-black">
+                <h2 id="dailyHeader" class="mb-1"></h2>
                 <div  id="dailyContainer" class="flex justify-between">
                     
                 </div>

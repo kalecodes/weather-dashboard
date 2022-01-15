@@ -1,9 +1,13 @@
 var currentWeatherContainer = document.getElementById("currentContainer");
 var dailyWeatherContainer = document.getElementById("dailyContainer");
-var cityNameEl = document.getElementById("cityNameDisplay");
+var dailyParentContainer = document.getElementById("dailyParentEl");
+var dailyHeader = document.getElementById("dailyHeader");
+// var cityNameEl = document.getElementById("cityNameDisplay");
 var searchEl = document.getElementById("searchEl");
 var searchBtn = document.getElementById("searchBtn");
-var symbolEl = document.getElementById("symbolEl");
+var historyList = document.getElementById("historyList");
+var historyTitle = document.getElementById("historyTitle");
+// var symbolEl = document.getElementById("symbolEl");
 
 var d = (new Date()).getDate();
 var m = (new Date()).getMonth() +1;
@@ -11,14 +15,30 @@ var y = (new Date()).getFullYear();
 
 //display current weather data in currentContainer
 var displayCurrent = function(cityName, data) {
-    //clear old data
-    //cityNameEl.textContent = "";
-    //cityNameEl.textContent = "";
-    searchEl.textContent = "";
+    //clear previous data 
+    currentWeatherContainer.textContent = "";
+    
+    //create current day header element
+    var currentSpan = document.createElement("span");
+    currentSpan.setAttribute("style", "display:flex; align-items:center;");
+    var currentHeader = document.createElement("h1");
+    currentHeader.setAttribute("style","display:inline");
+    currentHeader.setAttribute("id", "cityNameDisplay");
+    currentHeader.setAttribute("class", "text-2xl");
+    var currentIcon = document.createElement("img");
+    currentIcon.setAttribute("style", "display:inline")
+    currentIcon.setAttribute("id", "symbolEl");
 
+    currentSpan.appendChild(currentHeader);
+    currentSpan.appendChild(currentIcon);
+    currentWeatherContainer.appendChild(currentSpan);
+
+    var symbolEl = document.getElementById("symbolEl");
+    var cityNameEl = document.getElementById("cityNameDisplay");
+    
     //display current day info to the page 
     symbolEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png")
-    cityNameEl.textContent = cityName + "(" + m + "/" + d + "/" + y + ") ";
+    cityNameEl.textContent = cityName + " (" + m + "/" + d + "/" + y + ") ";
     
     var tempEl = document.createElement("p");
     tempEl.textContent = "Temp: " + data.current.temp + " °F";
@@ -37,12 +57,15 @@ var displayCurrent = function(cityName, data) {
     currentWeatherContainer.appendChild(windEl);
     currentWeatherContainer.appendChild(humidityEl);
     currentWeatherContainer.appendChild(uvEl);
-
-    console.log(currentWeatherContainer);
 }
 
 var displayDaily = function(data) {
+    //clear previous data
     dailyWeatherContainer.textContent = "";
+    dailyHeader.textContent = "";
+
+    //create header element
+    dailyHeader.textContent = "5-Day Forecast:";
 
     for (i = 0; i < 5; i++) {
         var dailyCard = document.createElement("div");
@@ -116,15 +139,30 @@ var translateLoc = function(cityName) {
     })
 }
 
-//create form submit handler and pass input to API
+//add searched city to history list
+var addToHistory = function(cityName) {
+    var recentCityEl = document.createElement("li");
+    recentCityEl.setAttribute("class", "w-11/12 h-8 mx-auto mb-2 bg-slate-300 p-1");
+    recentCityEl.textContent = cityName;
 
+    historyTitle.textContent = "Recent Search History:"
+    historyList.prepend(recentCityEl);
+
+}
+
+//create form submit handler and pass input to API
 var formSubmitHandler = function(event) {
   //  event.preventDefault();
 
     var cityName = searchEl.value;
     //check if city has been entered and pass city name to to translate function
     if (cityName) {
+        //clear all previous data 
+        
+        searchEl.textContent = "";
+        //RUN FUNCTION CHAIN TO DISPLAY SEARCH RESULTS
         translateLoc(cityName);
+        addToHistory(cityName);
     } else {
         alert("Please enter a US city name.")
     }
