@@ -1,7 +1,7 @@
 # Weather Dashboard
 
 ## Purpose
-The purpose of this project is to create an application that allows users to view weather information for a specified. Searching by city name results in the current weather as well as a 5-day forecast for that city. 
+The purpose of this project is to create an application that allows users to view current and future weather information for a specified city/cities to help users plan trips accordingly. 
 
 ## Application Detials
 
