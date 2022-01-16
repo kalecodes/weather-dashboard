@@ -153,7 +153,6 @@ var displayHistory = function(searchHistory) {
     for (i = 0; i < searchHistory.length; i++) {
         var recentCityEl = document.createElement("li");
         recentCityEl.setAttribute("class", "border border-info rounded p-2 m-2");
-        recentCityEl.setAttribute("id", "recent-item" + i);
         recentCityEl.textContent = searchHistory[i];
         historyTitle.textContent = "Recent Search History:"
         historyList.prepend(recentCityEl);
@@ -182,7 +181,6 @@ var formSubmitHandler = function(event) {
         //RUN FUNCTION CHAIN TO DISPLAY SEARCH RESULTS
         translateLoc(cityName);
         addToHistory(cityName);
-        loadSearchHistory();
     } else {}
 };
 
