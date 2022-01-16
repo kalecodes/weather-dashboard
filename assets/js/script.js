@@ -37,7 +37,7 @@ var displayCurrent = function(cityName, data) {
     var cityNameEl = document.getElementById("cityNameDisplay");
     
     //display current day info to the page 
-    symbolEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png")
+    symbolEl.setAttribute("src", "http://openweathermap.org/img/wn/" + data.current.weather[0].icon + "@2x.png")
     cityNameEl.textContent = cityName + " (" + m + "/" + d + "/" + y + ") ";
     
     var tempEl = document.createElement("p");
