@@ -51,7 +51,17 @@ var displayCurrent = function(cityName, data) {
 
     var uvEl = document.createElement("span");
     uvEl.textContent = "UV Index: " + data.current.uvi;
+    uvEl.setAttribute("class", "p-2 col-2 border border-primary rounded")
     //need to add if for coloring of element
+    if (data.current.uvi <= 2.5) {
+        uvEl.setAttribute("style", "background-color: forestgreen; color: white")
+    } else if (data.current.uvi <= 5) {
+        uvEl.setAttribute("style", "background-color: yellow;")
+    } else if (data.current.uvi <= 7.5) {
+        uvEl.setAttribute("style", "background-color: orange;")
+    } else if (data.current.uvi <= 10) {
+        uvEl.setAttribute("style", "background-color: crimson; color: white;")
+    } else {uvEl.setAttribute("style", "background-color: fuchsia;")}
 
     currentWeatherContainer.appendChild(tempEl);
     currentWeatherContainer.appendChild(windEl);
@@ -173,7 +183,7 @@ var formSubmitHandler = function(event) {
         addToHistory(cityName);
         loadSearchHistory();
     } else {
-        alert("Please enter a US city name.")
+        alert("Please check spelling and try again.")
     }
 };
 
