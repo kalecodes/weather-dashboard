@@ -20,10 +20,11 @@ var displayCurrent = function(cityName, data) {
     //create current day header element
     var currentSpan = document.createElement("span");
     currentSpan.setAttribute("style", "display:flex; align-items:center;");
-    var currentHeader = document.createElement("h1");
+    var currentHeader = document.createElement("h2");
     currentHeader.setAttribute("style","display:inline");
     currentHeader.setAttribute("id", "cityNameDisplay");
-    currentHeader.setAttribute("class", "text-2xl");
+    currentHeader.setAttribute("class", "display-4")
+    // currentHeader.setAttribute("class", "text-2xl");
     var currentIcon = document.createElement("img");
     currentIcon.setAttribute("style", "display:inline")
     currentIcon.setAttribute("id", "symbolEl");
@@ -68,9 +69,9 @@ var displayDaily = function(data) {
 
     for (i = 0; i < 5; i++) {
         var dailyCard = document.createElement("div");
-        dailyCard.setAttribute("class", "h-11/12 w-1/6 p-1 bg-blue-700")
+        dailyCard.setAttribute("class", "col-6 col-lg-2 border border-info rounded p-1")
 
-        var dailyDate = document.createElement("h3");
+        var dailyDate = document.createElement("h5");
         dailyDate.textContent = "(" + m + "/" + (d + (i + 1)) + "/" + y + ")";
 
         var dailySymbol = document.createElement("img")
@@ -150,7 +151,7 @@ var addToHistory = function(cityName) {
 
 var displayHistory = function(cityName) {
     var recentCityEl = document.createElement("li");
-    recentCityEl.setAttribute("class", "w-11/12 h-8 mx-auto mb-2 bg-slate-300 p-1");
+    recentCityEl.setAttribute("class", "border border-info rounded p-2 m-2");
     recentCityEl.textContent = cityName;
     historyTitle.textContent = "Recent Search History:"
     historyList.prepend(recentCityEl);

@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Weather Dashboard</title>
 </head>
-<body>
-    <header class="flex justify-center items-center min-w-full h-16 bg-blue-500" >
-        <h1 class="text-3xl">Weather Dashboard</h1>
+<body class="container-xxl mt-5">
+    <header class="row border border-dark">
+        <h1 class="col-12 text-center display-2">Weather Dashboard</h1>
     </header>
-    <div class="flex inline-block justify-around h-full m-4">
-        <div class="border border-black w-4/12 h-fit">
-            <h2 class="m-1">Search for a City:</h2>
-            <input id="searchEl" type="text" class="w-11/12 h-8 m-1 px-2 border border-black"/>
-            <button type="submit" id="searchBtn" class="w-3/12 h-8 m-1 p-1 border border-black">Search</button>
-            <br/>
-            <div class="mt-4">
-                <h2 id="historyTitle" class="m-1"></h2>
-                <ul id="historyList" class="">
+    <div class="row border border-dark pl-5">
+        <div class="col-sm-12 col-lg-4 border border-success">
+            <h2 class="">Search for a City:</h2>
+            <input id="searchEl" type="text" class="form-control mb-2"/>
+            <button type="submit" id="searchBtn" class="btn btn-outline-secondary mb-5">Search</button>
+            <div class="border border-danger mb-2 align-items-center">
+                <h4 id="historyTitle" class="mb-1"></h4>
+                <ul id="historyList" class="list-unstyled row d-flex justify-content-center">
 
                 </ul>
             </div>
         </div>
-        <div class="border bg-orange-400 w-8/12">
-            <div id="currentContainer" class="h-3/6 p-2 border border-black">
+        <div class="col-sm-12 col-lg-8 border border-success pl-5 pr-5">
+            <div id="currentContainer" class="row flex-column border border-danger pl-5 my-3">
                 <!-- <span style="display:flex; align-items: center;"><h1 style="display:inline;" id="cityNameDisplay" class="text-2xl"></h1><img style="display: inline;" id="symbolEl" src=""/></span> -->
                 
             </div>
-            <div id="dailyParentEl" class="h-3/6 p-2 border border-black">
-                <h2 id="dailyHeader" class="mb-1"></h2>
-                <div  id="dailyContainer" class="flex justify-between">
+            <div id="dailyParentEl" class="container border border-danger pl-5">
+                <h3 id="dailyHeader" class="row"></h3>
+                <div  id="dailyContainer" class="row flex justify-content-between border border-info">
                     
                 </div>
             </div>
