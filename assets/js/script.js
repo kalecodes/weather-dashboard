@@ -139,7 +139,6 @@ var translateLoc = function(cityName) {
     })
 }
 
-
 //add searched city to history list
 var addToHistory = function(cityName) {
     if (searchHistory.length > 12) {
