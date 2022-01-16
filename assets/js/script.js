@@ -75,7 +75,7 @@ var displayDaily = function(data) {
         dailyDate.textContent = "(" + m + "/" + (d + (i + 1)) + "/" + y + ")";
 
         var dailySymbol = document.createElement("img")
-        dailySymbol.setAttribute("src", "http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png");
+        dailySymbol.setAttribute("src", "https://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png");
 
         var dailyTemp = document.createElement("p");
         dailyTemp.textContent = "Temp: " + data.daily[i].temp.day + " °F";
@@ -121,7 +121,7 @@ var getWeatherData = function(cityName, latitude, longitude) {
 
 //translate city name into latitude and longitutde
 var translateLoc = function(cityName) {
-    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&appid=f0ae06afe6fabb93ea6866f6b722fa6a";
+    var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&appid=f0ae06afe6fabb93ea6866f6b722fa6a";
 
     //make request to the apiURL
     fetch(apiUrl).then(function(response) {
