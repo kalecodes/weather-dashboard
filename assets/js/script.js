@@ -142,19 +142,22 @@ var translateLoc = function(cityName) {
 
 //add searched city to history list
 var addToHistory = function(cityName) {
-    if (searchHistory.length > 7) {
+    if (searchHistory.length > 12) {
         searchHistory.shift();
     }
     searchHistory.push(cityName);
     localStorage.setItem("searches", JSON.stringify(searchHistory));
+    loadSearchHistory();
 }
 
-var displayHistory = function(cityName) {
-    var recentCityEl = document.createElement("li");
-    recentCityEl.setAttribute("class", "border border-info rounded p-2 m-2");
-    recentCityEl.textContent = cityName;
-    historyTitle.textContent = "Recent Search History:"
-    historyList.prepend(recentCityEl);
+var displayHistory = function(searchHistory) {
+    for (i = 0; i < searchHistory.length; i++) {
+        var recentCityEl = document.createElement("li");
+        recentCityEl.setAttribute("class", "border border-info rounded p-2 m-2");
+        recentCityEl.textContent = searchHistory[i];
+        historyTitle.textContent = "Recent Search History:"
+        historyList.prepend(recentCityEl);
+    }
 }
 
 //create form submit handler and pass input to API
@@ -179,10 +182,12 @@ searchBtn.addEventListener("click", formSubmitHandler);
 
 var loadSearchHistory = function() {
     historyList.textContent = "";
+    searchHistory = [];
     var storedHistory = JSON.parse(localStorage.getItem("searches"))
     for (i = 0; i < storedHistory.length; i++) {
-        displayHistory(storedHistory[i]);
+        searchHistory.push(storedHistory[i]);
     }
+    displayHistory(searchHistory);
 }
 
 document.addEventListener("load", loadSearchHistory());

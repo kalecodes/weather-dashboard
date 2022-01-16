@@ -7,30 +7,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Weather Dashboard</title>
 </head>
-<body class="container-xxl mt-5">
-    <header class="row border border-dark">
+<body class="container-xxl my-3 bg-info">
+    <header class="row">
         <h1 class="col-12 text-center display-2">Weather Dashboard</h1>
     </header>
-    <div class="row border border-dark pl-5">
-        <div class="col-sm-12 col-lg-4 border border-success">
+    <div class="row border border-dark mx-5 bg-light">
+        <div class="col-sm-12 col-lg-4 pt-5 border border-secondary">
             <h2 class="">Search for a City:</h2>
             <input id="searchEl" type="text" class="form-control mb-2"/>
             <button type="submit" id="searchBtn" class="btn btn-outline-secondary mb-5">Search</button>
-            <div class="border border-danger mb-2 align-items-center">
+            <div class="mb-2 align-items-center">
                 <h4 id="historyTitle" class="mb-1"></h4>
                 <ul id="historyList" class="list-unstyled row d-flex justify-content-center">
 
                 </ul>
             </div>
         </div>
-        <div class="col-sm-12 col-lg-8 border border-success pl-5 pr-5">
-            <div id="currentContainer" class="row flex-column border border-danger pl-5 my-3">
-                <!-- <span style="display:flex; align-items: center;"><h1 style="display:inline;" id="cityNameDisplay" class="text-2xl"></h1><img style="display: inline;" id="symbolEl" src=""/></span> -->
+        <div class="col-sm-12 col-lg-8 border border-secondary pl-5 pr-5 bg-light">
+            <div id="currentContainer" class="row flex-column pl-5 my-3">
                 
             </div>
-            <div id="dailyParentEl" class="container border border-danger pl-5">
-                <h3 id="dailyHeader" class="row"></h3>
-                <div  id="dailyContainer" class="row flex justify-content-between border border-info">
+            <div id="dailyParentEl" class="container pl-5 pb-5">
+                <h3 id="dailyHeader" class="row my-3"></h3>
+                <div  id="dailyContainer" class="row flex justify-content-between">
                     
                 </div>
             </div>
