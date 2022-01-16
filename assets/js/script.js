@@ -51,7 +51,7 @@ var displayCurrent = function(cityName, data) {
 
     var uvEl = document.createElement("span");
     uvEl.textContent = "UV Index: " + data.current.uvi;
-    uvEl.setAttribute("class", "p-2 col-2 border border-primary rounded")
+    uvEl.setAttribute("class", "p-2 col-6 col-md-3 col-lg-2 col-xxl-1 border border-primary rounded")
     //need to add if for coloring of element
     if (data.current.uvi <= 2.5) {
         uvEl.setAttribute("style", "background-color: forestgreen; color: white")
@@ -79,7 +79,7 @@ var displayDaily = function(data) {
 
     for (i = 0; i < 5; i++) {
         var dailyCard = document.createElement("div");
-        dailyCard.setAttribute("class", "col-6 col-lg-2 border border-info rounded p-1")
+        dailyCard.setAttribute("class", "col-12 col-md-6 col-lg-2 border border-info rounded p-1")
 
         var dailyDate = document.createElement("h5");
         dailyDate.textContent = "(" + m + "/" + (d + (i + 1)) + "/" + y + ")";
