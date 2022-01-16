@@ -149,24 +149,25 @@ var translateLoc = function(cityName) {
     })
 }
 
+var displayHistory = function(searchHistory) {
+    for (i = 0; i < searchHistory.length; i++) {
+        var recentCityEl = document.createElement("li");
+        recentCityEl.setAttribute("class", "border border-info rounded p-2 m-2");
+        recentCityEl.setAttribute("id", "recent-item" + i);
+        recentCityEl.textContent = searchHistory[i];
+        historyTitle.textContent = "Recent Search History:"
+        historyList.prepend(recentCityEl);
+    }
+}
+
 //add searched city to history list
 var addToHistory = function(cityName) {
-    if (searchHistory.length > 12) {
+    if (searchHistory.length > 11) {
         searchHistory.shift();
     }
     searchHistory.push(cityName);
     localStorage.setItem("searches", JSON.stringify(searchHistory));
     loadSearchHistory();
-}
-
-var displayHistory = function(searchHistory) {
-    for (i = 0; i < searchHistory.length; i++) {
-        var recentCityEl = document.createElement("li");
-        recentCityEl.setAttribute("class", "border border-info rounded p-2 m-2");
-        recentCityEl.textContent = searchHistory[i];
-        historyTitle.textContent = "Recent Search History:"
-        historyList.prepend(recentCityEl);
-    }
 }
 
 //create form submit handler and pass input to API
@@ -182,9 +183,7 @@ var formSubmitHandler = function(event) {
         translateLoc(cityName);
         addToHistory(cityName);
         loadSearchHistory();
-    } else {
-        alert("Please check spelling and try again.")
-    }
+    } else {}
 };
 
 searchBtn.addEventListener("click", formSubmitHandler);
@@ -200,3 +199,13 @@ var loadSearchHistory = function() {
 }
 
 document.addEventListener("load", loadSearchHistory());
+
+var historyClickHandler = function(event) {
+    var cityName = event.target.textContent;
+
+    if (cityName) {
+        translateLoc(cityName);
+    } else {}
+};
+
+historyList.addEventListener("click", historyClickHandler);

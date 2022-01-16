@@ -7,6 +7,7 @@ The purpose of this project is to create an application that allows users to vie
 
 ### Features: 
     * Most recent searches are remembered and displayed on page
+    * Clickable history list to quickly see results for that city
     * Searching a city results in current weather conditions and a five day forecast 
     * UV index appears color coded by value
     * Responsive layout adjusts by screen size to keep information legible 
